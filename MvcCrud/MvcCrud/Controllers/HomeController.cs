@@ -75,6 +75,8 @@ namespace MvcCrud.Controllers
             }
         }
 
+        [HttpDelete]
+        [ActionName("Delete")]
         public ActionResult DeleteEmployee(int id)
         {
             bool status = false;

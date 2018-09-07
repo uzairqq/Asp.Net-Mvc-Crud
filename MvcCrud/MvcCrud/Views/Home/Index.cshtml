@@ -23,6 +23,8 @@
                     <th>Email ID</th>
                     <th>City</th>
                     <th>Country</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
         </table>
@@ -50,6 +52,14 @@
                 { "data": "EmailId", "autoWidth": true },
                 { "data": "City", "autoWidth": true },
                 { "data": "Country", "autoWidth": true },
+                { "data": "EmployeeId", "width":"50px", "render": function(data) {
+                    return '<a class="popup" href="/home/save/' + data + '">Edit</a>';
+                }
+                },
+                { "data": "EmployeeId", "width":"50px", "render": function(data) {
+                    return '<a class="popup" href="/home/delete/' + data + '">Delete</a>';
+                }}
+
                 ]
         });
     })
