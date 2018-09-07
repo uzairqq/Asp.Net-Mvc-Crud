@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.ModelBinding;
 
 namespace MvcCrud.Models
 {
@@ -15,12 +16,12 @@ namespace MvcCrud.Models
         public int Id { get; set; }
 
         [StringLength(50)]
-        [Required]
+        [Required (AllowEmptyStrings = false,ErrorMessage = "Please Provide First Name")]
         [DisplayName("First Name")]
         public string FirstName { get; set; }
 
         [StringLength(50)]
-        [Required]
+        [Required (AllowEmptyStrings = false,ErrorMessage = "Please Provide Last Name")]
         [DisplayName("Last Name")]
         public string LastName { get; set; }
 
