@@ -22,7 +22,44 @@ namespace MvcCrud.Controllers
         public ActionResult GetEmployees()
         {
             var employees = _context.Employees.OrderBy(i => i.FirstName).ToList();
-            return Json(new {data = employees}, JsonRequestBehavior.AllowGet);
+            return Json(new { data = employees }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult Save(int id)
+        {
+            var emp = _context.Employees.Where(i => i.Id == id).FirstOrDefault();
+            return View(emp);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Employee emp)
+        {
+            bool status = false;
+            if (ModelState.IsValid)
+            {
+                if (emp.Id == 0)
+                {
+                    var recordInDb = _context.Employees.Single(i => i.Id == emp.Id);
+                    if (recordInDb != null)
+                    {
+                        recordInDb.FirstName = emp.FirstName;
+                        recordInDb.LastName = emp.LastName;
+                        recordInDb.EmailId = emp.EmailId;
+                        recordInDb.City = emp.City;
+                        recordInDb.Country = emp.Country;
+                    }
+                }
+                else
+                {
+                    _context.Employees.Add(emp);
+                }
+
+                _context.SaveChanges();
+                status = true;
+            }
+            return new JsonResult{Data = new {status}};
+            
         }
     }
 }
