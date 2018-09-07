@@ -59,7 +59,34 @@ namespace MvcCrud.Controllers
                 status = true;
             }
             return new JsonResult{Data = new {status}};
-            
+        }
+
+        [HttpDelete]//for Confirmation of delete
+        public ActionResult Delete(int id)
+        {
+            var recordInDb = _context.Employees.Where(i => i.Id == id).FirstOrDefault();
+            if (recordInDb != null)
+            {
+                return View(recordInDb);
+            }
+            else
+            {
+                return HttpNotFound(); 
+            }
+        }
+
+        public ActionResult DeleteEmployee(int id)
+        {
+            bool status = false;
+           var recordInDb=_context.Employees.Where(i => i.Id == id).FirstOrDefault();
+            if (recordInDb != null)
+            {
+                _context.Employees.Remove(recordInDb);
+                _context.SaveChanges();
+                status=true;  
+            }
+            return new JsonResult{Data = new {status}};
+
         }
     }
 }
