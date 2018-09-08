@@ -63,6 +63,13 @@
                 ]
         });
 
+        $('.tablecontainer').on('click',
+            'a.popup',
+            function(e) {
+                e.preventDefault();
+                OpenPopup($(this).attr('href'));
+            });
+
         function OpenPopup(pageUrl) {
             var $pageContent = $('<div/>');
             $pageContent.load(pageUrl);
