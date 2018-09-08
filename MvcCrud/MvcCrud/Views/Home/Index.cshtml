@@ -62,7 +62,34 @@
 
                 ]
         });
+
+        function OpenPopup(pageUrl) {
+            var $pageContent = $('<div/>');
+            $pageContent.load(pageUrl);
+
+            $dialog = $('<div class="popupWindow" style="overflow:auto"></div>')
+                .html($pageContent)
+                .dialog({
+                    draggable: false,
+                    autoOpen: false,
+                    resizable: false,
+                    model: true,
+                    title: 'Popup Dialog',
+                    height: 550,
+                    width: function() {
+                        $dialog.dialog('destroy').remove();
+                    }
+                })
+
+
+
+            $dialog.dialog('open');
+        }
+
     })
+
+
+  
 
 
 </script>
