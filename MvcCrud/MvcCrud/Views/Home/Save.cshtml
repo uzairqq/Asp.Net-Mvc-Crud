@@ -1,0 +1,43 @@
+﻿@model MvcCrud.Models.Employee
+
+<h2>Save</h2>
+@using (Html.BeginForm("Save", "Home", FormMethod.Post, new { id = "popupForm" }))
+{
+    if (Model != null && Model.Id > 0)
+    {
+        @Html.HiddenFor(i => i.Id)
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.FirstName)
+        @Html.TextBoxFor(i => i.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(i => i.FirstName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.LastName)
+        @Html.TextBoxFor(i => i.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(i => i.LastName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.EmailId)
+        @Html.TextBoxFor(i => i.EmailId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(i => i.EmailId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.City)
+        @Html.TextBoxFor(i => i.City, new { @class = "form-control" })
+        @Html.ValidationMessageFor(i => i.City)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.Country)
+        @Html.TextBoxFor(i => i.Country, new { @class = "form-control" })
+        @Html.ValidationMessageFor(i => i.Country)
+    </div>
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+}
