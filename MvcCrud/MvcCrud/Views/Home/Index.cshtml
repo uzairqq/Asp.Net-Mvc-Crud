@@ -14,7 +14,7 @@
     <h2>title</h2>
 </head>
 <body>
-    <div style="width: 90%; margin:0 auto">
+    <div style="width: 90%; margin:0 auto" class="tablecontainer">
         <table id="myDataTable">
             <thead>
                 <tr>
@@ -79,11 +79,28 @@
                     width: function() {
                         $dialog.dialog('destroy').remove();
                     }
-                })
+                });
+            //submit the form using jquery ajax
 
+            $('.popupWindow').on('submit', '#popupForm', function (e) {
+                var url = $('#popupForm')[0].action;
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: $('#popupForm').serialize(),
+                    success: function(data) {
+                        if (data.status) {
+                            $dialog.dialog('close');
+                            table.ajax.reload();
+                        }
+                    }
+                });
 
+                e.preventDefault();
+            })
 
-            $dialog.dialog('open');
+            //open the dialog box
+            $dialog.dialog('open'); 
         }
 
     })
