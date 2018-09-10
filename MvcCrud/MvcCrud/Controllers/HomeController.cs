@@ -28,7 +28,7 @@ namespace MvcCrud.Controllers
         [HttpGet]
         public ActionResult Save(int id)
         {
-            var emp = _context.Employees.Where(i => i.Id == id).FirstOrDefault();
+            var emp = _context.Employees.FirstOrDefault(i => i.Id == id);
             return View(emp);
         }
 
@@ -38,57 +38,61 @@ namespace MvcCrud.Controllers
             bool status = false;
             if (ModelState.IsValid)
             {
-                if (emp.Id == 0)
+
+                if (emp.Id > 0)
                 {
-                    var recordInDb = _context.Employees.Single(i => i.Id == emp.Id);
-                    if (recordInDb != null)
+                    //Edit 
+                    var v = _context.Employees.Where(a => a.Id == emp.Id).FirstOrDefault();
+                    if (v != null)
                     {
-                        recordInDb.FirstName = emp.FirstName;
-                        recordInDb.LastName = emp.LastName;
-                        recordInDb.EmailId = emp.EmailId;
-                        recordInDb.City = emp.City;
-                        recordInDb.Country = emp.Country;
+                        v.FirstName = emp.FirstName;
+                        v.LastName = emp.LastName;
+                        v.EmailId = emp.EmailId;
+                        v.City = emp.City;
+                        v.Country = emp.Country;
                     }
                 }
                 else
                 {
+                    //Save
                     _context.Employees.Add(emp);
                 }
 
                 _context.SaveChanges();
                 status = true;
             }
-            return new JsonResult{Data = new {status}};
+
+            return new JsonResult {Data = new {status = status}};
         }
 
-        [HttpDelete]//for Confirmation of delete
+        [HttpGet]
         public ActionResult Delete(int id)
         {
-            var recordInDb = _context.Employees.Where(i => i.Id == id).FirstOrDefault();
+            var recordInDb = _context.Employees.FirstOrDefault(i => i.Id == id);
             if (recordInDb != null)
             {
                 return View(recordInDb);
             }
-            else
-            {
-                return HttpNotFound(); 
-            }
+
+            return HttpNotFound();
         }
 
-        [HttpDelete]
+        [HttpPost]
         [ActionName("Delete")]
         public ActionResult DeleteEmployee(int id)
         {
             bool status = false;
-           var recordInDb=_context.Employees.Where(i => i.Id == id).FirstOrDefault();
-            if (recordInDb != null)
-            {
-                _context.Employees.Remove(recordInDb);
-                _context.SaveChanges();
-                status=true;  
-            }
-            return new JsonResult{Data = new {status}};
-
+           
+          
+                var v = _context.Employees.FirstOrDefault(a => a.Id == id);
+                if (v != null)
+                {
+                    _context.Employees.Remove(v);
+                    _context.SaveChanges();
+                    status = true;
+                }
+        
+            return new JsonResult { Data = new { status = status} };
         }
     }
 }
