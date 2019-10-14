@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +15,108 @@
 </head>
 
 <body>
-    <h1>hello world</h1>
+    <div class="container">
+        <div class="card m-t-3">
+            <div class="card-header">
+                Student Information
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="FirstName">First Name:</label>
+                        <input type="text" name="FirstName" placeholder="John" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="LastName">Last Name:</label>
+                        <input type="text" name="LastName" placeholder="Doe" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="Email">Email:</label>
+                        <input type="email" name="Email" class="form-control" placeholder="john_doe@abc.com" />
+
+
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="DateOfBirth">
+                            Date Of Birth:
+                        </label>
+                        <input type="date" class="form-control" name="DateOfBirth" />
+
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="">
+                            Mobile Number
+                        </label>
+                        <input type="number" class="form-control" name="MobileNumber" placeholder="03329874521" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="Address">Address: </label>
+                        <input type="text" placeholder="Abc 123 Street" name="Address" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="Gender">Gender</label>
+                        <select class="form-control">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="Country">
+                            Country:
+                        </label>
+                        <select class="form-control">
+                            <option value="pk">Pakistan</option>
+                            <option value="bng">Bangladesh</option>
+                            <option value="Usa">United States</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="ind">India</option>
+                            <option value="sri">Srilanka</option>
+                            <option value="sfa">South Africa</option>
+                            <option value="trk">Turkey</option>
+                            <option value="jpn">Japan</option>
+                            <option value="chn">China</option>
+                            <option value="irn">Iran</option>
+                            <option value="sda">Saudi Arabia</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="State">State:</label>
+                        <select class="form-control">
+                            <option value="sindh">Sindh</option>
+                            <option value="balochistan">Balochistan</option>
+                            <option value="punjab">Punjab</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="PostalCode">Postal Code:</label>
+                        <input type="number" name="sPostalCode" placeholder="74500" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="EmergencyContact">Emergency Contact:</label>
+                        <input type="number" name="EmergencyContact" placeholder="03213810286" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+</script>
 
 </html>
